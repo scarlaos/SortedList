@@ -42,11 +42,11 @@ public class SortedList {
         int position = search(target);
 
         if(position>=0){
-            return "Foud " + target +" at index " + position;
+            return "Found " + target +" at index " + position;
         }
         else{
             int addPosition = -position -1;
-            return target + "was not found. ";
+            return target + "was not found. "+ target +" would be at index " + addPosition ;
         }
     }
 
@@ -57,9 +57,29 @@ public class SortedList {
     public String toString(){
         StringBuilder sb = new StringBuilder();
         for(int i=0;i<list.size();i++){
-            sb.append(list.get(i));
+            sb.append(i).append(" : ").append(list.get(i)).append("\n");
         }
         return sb.toString();
+    }
+
+    //test
+    public static void main(String[] args) {
+        SortedList list = new SortedList();
+
+        list.add("A");
+        list.add("D");
+        list.add("E");
+        list.add("B");
+        list.add("C");
+        list.add("F");
+
+        System.out.println(list);
+        System.out.println(list.location("A"));
+        System.out.println(list.location("B"));
+        System.out.println(list.location("C"));
+        System.out.println(list.location("D"));
+        System.out.println(list.location("E"));
+        System.out.println(list.location("F"));
     }
 
 
