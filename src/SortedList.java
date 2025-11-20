@@ -80,6 +80,7 @@ public class SortedList {
         System.out.println(list.location("D"));
         System.out.println(list.location("E"));
         System.out.println(list.location("F"));
+
     }
 
 
