@@ -26,15 +26,17 @@ public class SortedListFrame extends JFrame {
         setSize(600,400);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
+        mainPanel.setLayout(new BorderLayout());
 
         createTextPanel();
         createDisplayPanel();
         createButtonPanel();
 
-        mainPanel.add(textPanel, BorderLayout.CENTER);
+        mainPanel.add(textPanel, BorderLayout.NORTH);
+        mainPanel.add(scroller, BorderLayout.CENTER);
         mainPanel.add(buttonPanel, BorderLayout.SOUTH);
 
-        add(mainPanel);
+        add(mainPanel, BorderLayout.CENTER);
         setVisible(true);
     }
 
@@ -76,8 +78,18 @@ public class SortedListFrame extends JFrame {
 
         sortedList.add(input);
         sortedArea.append("Added "+input+"\n" );
+        updateDisplay();
 
         addField.setText(""); //clears the text so more items can be added
+    }
+
+    public void updateDisplay(){
+        sortedArea.append("\n New List: \n");
+        if(sortedList.size()==0){
+            JOptionPane.showMessageDialog(textPanel,"Please enter the items to be sorted. ");
+        }else{
+            sortedArea.append(sortedList.toString()+"\n");
+        }
     }
 
     public void createButtonPanel() {
