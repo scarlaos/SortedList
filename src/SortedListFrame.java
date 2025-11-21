@@ -9,6 +9,9 @@ public class SortedListFrame extends JFrame {
     JTextField addField;
     JLabel addLabel;
 
+    JTextField searchField;
+    JLabel searchLabel;
+
     JTextArea sortedArea;
     JScrollPane scroller;
 
@@ -57,12 +60,21 @@ public class SortedListFrame extends JFrame {
         addLabel = new JLabel("Add to List: ");
         addField = new JTextField(30);
 
+        searchLabel = new JLabel("Search the List: ");
+        searchField = new JTextField(30);
+
         addField.addActionListener(e -> {
             addToList();
         });
 
+        searchField.addActionListener(e -> {
+            searchList();
+        });
+
         textPanel.add(addLabel);
         textPanel.add(addField);
+        textPanel.add(searchLabel);
+        textPanel.add(searchField);
     }
 
     public void addToList() {
