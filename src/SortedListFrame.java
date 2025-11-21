@@ -9,13 +9,18 @@ public class SortedListFrame extends JFrame {
     JTextField addField;
     JLabel addLabel;
 
-    JTextArea sortedField;
+    JTextArea sortedArea;
+    JScrollPane scroller;
 
 
     JButton addButton;
+    JButton searchButton;
     JButton quitButton;
 
+    SortedList sortedList;
+
     public SortedListFrame() {
+        sortedList = new SortedList();
         mainPanel = new JPanel();
         setTitle("Sorted List");
         setSize(400,400);
@@ -23,6 +28,7 @@ public class SortedListFrame extends JFrame {
         setLayout(new BorderLayout());
 
         createTextPanel();
+        createDisplayPanel();
         createButtonPanel();
 
         mainPanel.add(textPanel, BorderLayout.CENTER);
@@ -31,15 +37,36 @@ public class SortedListFrame extends JFrame {
         add(mainPanel);
         setVisible(true);
     }
+
+    public void createDisplayPanel(){
+        sortedArea = new JTextArea();
+        sortedArea.setEditable(false);
+
+        scroller= new JScrollPane(sortedArea);
+
+        sortedArea.append("Sorted List Program \n");
+        sortedArea.append("Add items to be sorted. \n");
+    }
+
     public void createTextPanel() {
         textPanel = new JPanel();
-        textPanel.setLayout(new GridLayout(3,3));
+        textPanel.setLayout(new FlowLayout());
 
         addLabel = new JLabel("Add to List: ");
-        addField = new JTextField();
+        addField = new JTextField(30);
+
+        addField.addActionListener(e -> {
+            addToList();
+        });
+
         textPanel.add(addLabel);
         textPanel.add(addField);
     }
+
+    public void addToList() {
+        String input = addField.getText().trim();
+    }
+
     public void createButtonPanel() {
         buttonPanel = new JPanel();
         buttonPanel.setLayout(new FlowLayout());
@@ -49,12 +76,18 @@ public class SortedListFrame extends JFrame {
             addList();
         });
 
+        searchButton = new JButton("Search");
+        searchButton.addActionListener(e -> {
+
+        });
+
         quitButton = new JButton("Quit");
         quitButton.addActionListener(e -> {
             System.exit(0);
         });
 
         buttonPanel.add(addButton);
+        buttonPanel.add(searchButton);
         buttonPanel.add(quitButton);
     }
     public void addList() {
