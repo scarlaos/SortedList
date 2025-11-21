@@ -23,7 +23,7 @@ public class SortedListFrame extends JFrame {
         sortedList = new SortedList();
         mainPanel = new JPanel();
         setTitle("Sorted List");
-        setSize(400,400);
+        setSize(600,400);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
 
@@ -65,6 +65,19 @@ public class SortedListFrame extends JFrame {
 
     public void addToList() {
         String input = addField.getText().trim();
+
+
+
+        if(input.isEmpty()){
+            JOptionPane.showMessageDialog(textPanel,"Please enter items to be sorted. ");
+            return;
+        }
+
+
+        sortedList.add(input);
+        sortedArea.append("Added "+input+"\n" );
+
+        addField.setText(""); //clears the text so more items can be added
     }
 
     public void createButtonPanel() {
@@ -73,12 +86,12 @@ public class SortedListFrame extends JFrame {
 
         addButton = new JButton("Add to List");
         addButton.addActionListener(e -> {
-            addList();
+            addToList();
         });
 
         searchButton = new JButton("Search");
         searchButton.addActionListener(e -> {
-
+            searchList();
         });
 
         quitButton = new JButton("Quit");
@@ -90,7 +103,22 @@ public class SortedListFrame extends JFrame {
         buttonPanel.add(searchButton);
         buttonPanel.add(quitButton);
     }
-    public void addList() {
 
+    public void searchList(){
+        String input = addField.getText().trim();
+
+        if(input.isEmpty()){
+            JOptionPane.showMessageDialog(textPanel,"Please enter a item to be searched for. ");
+            return;
+        }
+
+        String result= sortedList.location(input);
+        sortedArea.append("Search: " + result+"\n");
+
+        addField.setText("");//resets search
+    }
+
+    public static void main(String[] args) {
+        SortedListFrame frame = new SortedListFrame();
     }
 }
