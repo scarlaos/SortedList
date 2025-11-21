@@ -62,7 +62,7 @@ public class SortedList {
         return sb.toString();
     }
 
-    //test
+    /* Test
     public static void main(String[] args) {
         SortedList list = new SortedList();
 
@@ -82,6 +82,7 @@ public class SortedList {
         System.out.println(list.location("F"));
 
     }
+    */
 
 
 }
