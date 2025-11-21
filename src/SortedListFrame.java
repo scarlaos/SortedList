@@ -48,14 +48,12 @@ public class SortedListFrame extends JFrame {
         sortedArea.setEditable(false);
 
         scroller= new JScrollPane(sortedArea);
-
-        sortedArea.append("Sorted List Program \n");
-        sortedArea.append("Add items to be sorted. \n");
+        sortedArea.append("Add items to be sorted \n");
     }
 
     public void createTextPanel() {
         textPanel = new JPanel();
-        textPanel.setLayout(new FlowLayout());
+        textPanel.setLayout(new GridLayout(2,2));
 
         addLabel = new JLabel("Add to List: ");
         addField = new JTextField(30);
@@ -129,17 +127,17 @@ public class SortedListFrame extends JFrame {
     }
 
     public void searchList(){
-        String input = addField.getText().trim();
+        String input = searchField.getText().trim();
 
         if(input.isEmpty()){
-            JOptionPane.showMessageDialog(textPanel,"Please enter a item to be searched for. ");
+            JOptionPane.showMessageDialog(textPanel,"Please enter an item to be searched for. ");
             return;
         }
 
         String result= sortedList.location(input);
         sortedArea.append("Search: " + result+"\n");
 
-        addField.setText("");//resets search
+        searchField.setText("");//resets search
     }
 
     public static void main(String[] args) {

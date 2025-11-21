@@ -46,7 +46,7 @@ public class SortedList {
         }
         else{
             int addPosition = -position -1;
-            return target + "was not found. "+ target +" would be at index " + addPosition ;
+            return target + " was not found. "+ target +" would be at index " + addPosition ;
         }
     }
 
